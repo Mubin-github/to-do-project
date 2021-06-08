@@ -1,4 +1,4 @@
-.heading{
+/* .heading{
 	width: 50%;
 	margin: 30px auto;
 	text-align: center;
@@ -73,3 +73,14 @@ tr:hover {
 	border-radius: 3px;
 	text-decoration: none;
 }
+
+.edit{
+	text-align: center;
+}
+.edit a{
+	color: white;
+	background: #07ee1a;
+	padding: 1px 6px;
+	border-radius: 3px;
+	text-decoration: none;
+} */

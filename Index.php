@@ -20,23 +20,64 @@
 	if (isset($_GET['del_task'])) {
 		$id = $_GET['del_task'];
 	
-		mysqli_query($db, "DELETE FROM tasks WHERE id=".$id);
+		mysqli_query($db, "DELETE FROM tasks WHERE Id=".$id);
 		header('location: index.php');
 	 }
+if (isset($_GET['edit_task'])){
+	$id= $_GET['edit_task'];
+	$editTask= mysqli_query($db, "GET * FROM tasks WHERE Id=".$id);
+}
+
 	
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>ToDo List Application PHP and MySQL</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="container">
+<h1>baal</h1>
+	<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+  <form method="post" action="index.php">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	<h1>baal</h1>
+	<!-- <input type="text" name="update" value"> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+	</form> 
+  </div>
+</div>
 	<div class="heading">
 		<h2 style="font-style: 'Hervetica';">ToDo List Application PHP and MySQL database</h2>
 	</div>
 	<form method="post" action="index.php">
-	
+
+
 	
 	<?php if (isset($errors)) { ?>
 	<p><?php echo $errors; ?></p>
@@ -68,10 +109,18 @@
 				<td class="delete"> 
 					<a href="index.php?del_task=<?php echo $row['Id'] ?>">x</a>
 				</td>
+				<td class="edit">
+
+<form>				
+<a type="button" href="index.php?edit_task=<?php echo $row['Id'] ?>" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+	Edit	</a>
+
+
+				</td>
 			</tr>
 		<?php $i++; } ?>	
 	</tbody>
 </table>
-
+</div>
 </body>
 </html>
