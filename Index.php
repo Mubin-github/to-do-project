@@ -22,7 +22,7 @@
 	
 		mysqli_query($db, "DELETE FROM tasks WHERE id=".$id);
 		header('location: index.php');
-	}
+	 }
 	
 ?>
 <!DOCTYPE html>
@@ -35,7 +35,9 @@
 	<div class="heading">
 		<h2 style="font-style: 'Hervetica';">ToDo List Application PHP and MySQL database</h2>
 	</div>
-	<form method="post" action="index.php" class="input_form">
+	<form method="post" action="index.php">
+	
+	
 	<?php if (isset($errors)) { ?>
 	<p><?php echo $errors; ?></p>
 	<?php } ?>
@@ -64,7 +66,7 @@
 				<td> <?php echo $i; ?> </td>
 				<td class="task"> <?php echo $row['task']; ?> </td>
 				<td class="delete"> 
-					<a href="index.php?del_task=<?php echo $row['id'] ?>">x</a>
+					<a href="index.php?del_task=<?php echo $row['Id'] ?>">x</a>
 				</td>
 			</tr>
 		<?php $i++; } ?>	
@@ -73,4 +75,3 @@
 
 </body>
 </html>
-
